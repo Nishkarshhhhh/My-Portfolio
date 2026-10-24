@@ -5,6 +5,7 @@ export interface Project {
   title: string;
   subtitle: string;
   featured: boolean;
+  category: "Distributed Systems" | "AI & Machine Learning" | "Full-Stack Web";
   tagline: string;
   summary: string;
   technologies: string[];
@@ -75,8 +76,9 @@ export const PROJECTS: Project[] = [
     title: "Distributed Job Scheduler",
     subtitle: "Distributed Job Scheduling & Queue System",
     featured: true,
-    tagline: "A distributed job scheduling platform with REST APIs, CRON-based scheduling, job queues, retries, execution tracking, and worker coordination using BullMQ and Redis.",
-    summary: "Built a distributed job scheduling platform to handle CRON-based recurring execution, asynchronous job queues, execution tracking, and worker coordination using BullMQ, Redis, PostgreSQL, Prisma, and Docker Compose.",
+    category: "Distributed Systems",
+    tagline: "A distributed job-processing platform with 12 REST API endpoints, BullMQ/Redis queues, CRON scheduling, and PostgreSQL execution tracking with Docker Compose.",
+    summary: "Built a distributed job-processing platform with 12 REST API endpoints, BullMQ/Redis queues, CRON scheduling, configurable retries (up to 3 attempts), PostgreSQL-backed execution tracking, and 2 containerized worker services with Docker Compose.",
     technologies: [
       "TypeScript",
       "Node.js",
@@ -89,56 +91,165 @@ export const PROJECTS: Project[] = [
     ],
     githubUrl: "https://github.com/Nishkarshhhhh/distributed-job-scheduler",
     liveUrl: null,
-    problem: "Applications often require background job execution, scheduled CRON jobs, and task queues without blocking main request lifecycles. Without structured queues, retries, and execution tracking, jobs can fail silently or cause inconsistent states.",
-    whatWasBuilt: "A distributed job scheduling platform with REST APIs for job creation and management, BullMQ and Redis for queueing and job dispatching, independent workers for job processing, and PostgreSQL with Prisma for persistent job and run record management.",
+    problem: "Modern web systems require background job execution, recurring CRON schedules, and task queues without blocking main HTTP request lifecycles. Without structured queues, retry policies, and execution tracking, background jobs risk silent failure and inconsistent application states.",
+    whatWasBuilt: "A production-grade distributed job-processing platform with 12 REST API endpoints, BullMQ and Redis for queue management, independent Docker-containerized worker services supporting 5 concurrent jobs per worker, and PostgreSQL with Prisma for persistent job and run tracking.",
     technicalApproach: [
-      "REST APIs built with Express and TypeScript for job definitions and management",
-      "CRON-based scheduling and immediate background task queueing using BullMQ and Redis",
-      "Worker coordination executing background jobs with configurable retries",
-      "PostgreSQL-backed job and execution run tracking managed via Prisma ORM",
-      "Input validation, rate limiting, and structured error handling on API endpoints",
-      "Docker Compose setup orchestrating Redis, PostgreSQL, API, and worker services"
+      "Built 12 REST API endpoints with Express and TypeScript for job definitions, dispatching, and run queries",
+      "Implemented BullMQ and Redis queues supporting immediate, delayed, and CRON recurring scheduling",
+      "Configured automated exponential retry policies (up to 3 attempts) with structured error handling",
+      "Managed PostgreSQL-backed job and execution run tracking with Prisma ORM migrations",
+      "Enforced payload validation, rate limiting middleware, and unified error handling across API routes",
+      "Containerized Redis, PostgreSQL, API, and 2 worker services with Docker Compose, validated by 50/50 passing tests"
     ],
     keyFeatures: [
       {
-        title: "REST APIs & Management",
-        description: "Endpoints for creating, scheduling, monitoring, and managing jobs and execution runs."
+        title: "12 REST API Endpoints",
+        description: "Comprehensive endpoints for job registration, status monitoring, cancellation, and execution logs."
       },
       {
-        title: "CRON & Scheduled Jobs",
-        description: "Supports recurring CRON schedules and delayed task execution via BullMQ."
+        title: "BullMQ & Redis Queues",
+        description: "In-memory task queues handling priority dispatching, concurrency control, and delayed execution."
       },
       {
-        title: "Job Queues & Retries",
-        description: "Redis-backed BullMQ queues handle task dispatching and job retry execution."
+        title: "CRON & Scheduled Execution",
+        description: "Repeatable CRON expressions and scheduled triggers executed reliably without server clock drift."
       },
       {
-        title: "Execution Tracking",
-        description: "Tracks job statuses, run logs, timestamps, and failure information in PostgreSQL."
+        title: "Automated Retries & Error Handling",
+        description: "Up to 3 automatic retry attempts with exponential backoff and failed-run diagnostic capture."
       },
       {
-        title: "Worker Coordination",
-        description: "Decouples worker execution from API handlers to process workloads reliably."
+        title: "PostgreSQL Run Persistence",
+        description: "Complete execution history, timestamps, worker metadata, and status tracking managed via Prisma."
       },
       {
-        title: "Containerized Orchestration",
-        description: "Docker Compose service orchestration with Prisma database migrations."
+        title: "Dockerized Multi-Worker Architecture",
+        description: "Containerized setup with 2 worker services handling 5 concurrent jobs per worker, verified by 50/50 test suite."
       }
     ],
-    databaseDetails: "PostgreSQL database managed via Prisma ORM for structured job configuration persistence and historical run tracking.",
+    databaseDetails: "PostgreSQL database managed via Prisma ORM for structured job configuration persistence and historical execution run tracking.",
     resultsOrMetrics: [
-      "Configurable job retry policies and execution status tracking",
-      "Persistent historical job and run management in PostgreSQL",
-      "Multi-container environment managed with Docker Compose"
+      "12 REST API endpoints for full job lifecycle management",
+      "Up to 3 automatic retries with structured error handling",
+      "2 worker services supporting 5 concurrent jobs per worker",
+      "Multi-container environment validated by 50/50 passing tests"
+    ]
+  },
+  {
+    id: "devops-ai",
+    slug: "devops-ai",
+    order: "02",
+    title: "DevOpsAI Research",
+    subtitle: "AI-Driven Automation in Modern DevOps Pipelines",
+    featured: true,
+    category: "AI & Machine Learning",
+    tagline: "An analytical study evaluating AI-driven automation, predictive anomaly detection, and self-healing architectures in modern DevOps workflows.",
+    summary: "Investigated AI-driven automation in modern DevOps pipelines through literature review and controlled evaluation of predictive and self-healing machine learning architectures including LSTM, XGBoost, Isolation Forest, Prophet/ARIMA, and PPO reinforcement learning.",
+    technologies: [
+      "Python",
+      "LSTM",
+      "XGBoost",
+      "Isolation Forest",
+      "Prophet/ARIMA",
+      "Reinforcement Learning (PPO)",
+      "DevOps"
+    ],
+    githubUrl: null,
+    liveUrl: null,
+    problem: "High-velocity CI/CD delivery pipelines face complex failure modes where static threshold alerts produce alert fatigue and fail to detect subtle operational degradation before customer-impacting outages occur.",
+    whatWasBuilt: "An analytical research investigation evaluating predictive monitoring, multi-model anomaly detection, time-series failure forecasting, and policy-driven autonomous remediation architectures in modern continuous delivery pipelines.",
+    technicalApproach: [
+      "Literature review and structured evaluation of AI/ML architectures in continuous delivery pipelines",
+      "Evaluation of anomaly detection models including Isolation Forest, LSTM neural networks, and XGBoost",
+      "Time-series metric forecasting analysis using Prophet and ARIMA for metric degradation prediction",
+      "Exploration of policy-driven automated remediation and rollback using PPO reinforcement learning"
+    ],
+    keyFeatures: [
+      {
+        title: "Predictive Anomaly Detection",
+        description: "Evaluated LSTM and Isolation Forest models for early detection of latency and telemetry anomalies."
+      },
+      {
+        title: "Time-Series Metric Forecasting",
+        description: "Analyzed Prophet and ARIMA models for predicting resource saturation and pipeline failures."
+      },
+      {
+        title: "Autonomous Remediation Workflows",
+        description: "Investigated PPO reinforcement learning architectures for automated incident mitigation and rollback."
+      },
+      {
+        title: "Operational Impact Analysis",
+        description: "Evaluated reported benchmarks and literature outcomes across MTTD, MTTR, and change failure rates."
+      }
+    ],
+    databaseDetails: "Evaluation across telemetry benchmarks, continuous integration log datasets, and published DevOps operational studies.",
+    resultsOrMetrics: [
+      "Evaluated predictive architectures for modern CI/CD software delivery pipelines",
+      "Comparative analysis across LSTM, XGBoost, Isolation Forest, and Prophet/ARIMA models",
+      "Synthesized analytical framework for policy-driven autonomous remediation"
+    ]
+  },
+  {
+    id: "fake-news-detection",
+    slug: "fake-news-detection",
+    order: "03",
+    title: "Fake News Detection",
+    subtitle: "NLP & Machine Learning Classification",
+    featured: true,
+    category: "AI & Machine Learning",
+    tagline: "An applied NLP pipeline trained on 44,898 articles with CountVectorizer and Logistic Regression achieving ~98.6% prediction accuracy.",
+    summary: "Built an applied NLP classification pipeline in Python processing 44,898 labeled news articles using tokenization, stopword removal, and Porter stemming, extracting 10,000-dimensional CountVectorizer features, and comparing Logistic Regression, Naive Bayes, and KNN models.",
+    technologies: [
+      "Python",
+      "NLP",
+      "Scikit-learn",
+      "Pandas",
+      "CountVectorizer",
+      "Logistic Regression"
+    ],
+    githubUrl: null,
+    liveUrl: null,
+    problem: "Automated identification of misleading or fabricated news requires structured textual preprocessing, high-dimensional feature engineering, and robust classification across large textual corpora without overfitting.",
+    whatWasBuilt: "An applied NLP pipeline featuring tokenization, stopword filtering, and Porter stemming, 10,000-dimensional CountVectorizer feature extraction across an 80/20 train-test split, and a comparative evaluation across Logistic Regression, Naive Bayes, and K-Nearest Neighbors.",
+    technicalApproach: [
+      "Processed 44,898 labeled news articles using NLP preprocessing (tokenization, stopword removal, Porter stemming)",
+      "Engineered 10,000-dimensional Bag-of-Words feature representations using CountVectorizer",
+      "Trained and evaluated models using a stratified 80/20 train-test split",
+      "Benchmarked 3 classifiers: Logistic Regression, Naive Bayes, and K-Nearest Neighbors (KNN)"
+    ],
+    keyFeatures: [
+      {
+        title: "Corpus Preprocessing",
+        description: "Processed 44,898 labeled news articles with tokenization, stopword removal, and Porter stemming."
+      },
+      {
+        title: "10,000-Dim Feature Vectorization",
+        description: "Extracted 10,000-dimensional Bag-of-Words feature space using Scikit-learn CountVectorizer."
+      },
+      {
+        title: "Multi-Classifier Comparison",
+        description: "Compared Logistic Regression against Naive Bayes and KNN baselines across precision, recall, and F1."
+      },
+      {
+        title: "High Precision & Recall",
+        description: "Logistic Regression achieved 98.6% accuracy, 98.4% precision, 98.8% recall, and 98.6% F1-score."
+      }
+    ],
+    databaseDetails: "Labeled corpus of 44,898 news articles processed with Pandas data structures.",
+    resultsOrMetrics: [
+      "44,898 labeled articles processed in training and evaluation",
+      "10,000-dimensional Bag-of-Words feature representations",
+      "Logistic Regression achieved ~98.6% accuracy, 98.4% precision, 98.8% recall, and 98.6% F1-score"
     ]
   },
   {
     id: "cartzilla",
     slug: "cartzilla",
-    order: "02",
+    order: "04",
     title: "Cartzilla",
     subtitle: "Full-Stack E-Commerce Platform",
     featured: true,
+    category: "Full-Stack Web",
     tagline: "A full-stack e-commerce web platform supporting product discovery, user authentication, shopping cart workflows, order management, and administrative control.",
     summary: "Developed a full-stack e-commerce application using PHP and MySQL that supports product discovery, user authentication, shopping cart workflows, order management, and administrative product and order management.",
     technologies: [
@@ -189,54 +300,6 @@ export const PROJECTS: Project[] = [
     resultsOrMetrics: [
       "Complete e-commerce lifecycle from user registration to order completion",
       "Deployed and accessible via live online demo"
-    ]
-  },
-  {
-    id: "fake-news-detection",
-    slug: "fake-news-detection",
-    order: "03",
-    title: "Fake News Detection",
-    subtitle: "NLP & Machine Learning",
-    featured: true,
-    tagline: "A natural language processing and machine learning classifier trained on 44,000+ articles to detect misinformation with ~98.6% prediction accuracy.",
-    summary: "Built an NLP classification pipeline using Python, Pandas, and Scikit-learn to analyze over 44,000 news articles and classify misinformation using a Logistic Regression model.",
-    technologies: [
-      "Python",
-      "NLP",
-      "Scikit-learn",
-      "Pandas"
-    ],
-    githubUrl: null, // Gracefully renders "Repository coming soon"
-    liveUrl: null,
-    problem: "Automated identification of misleading or fake news requires structured textual preprocessing, feature extraction, and high-accuracy classification across large textual datasets.",
-    whatWasBuilt: "An NLP pipeline and predictive model trained on a benchmark dataset of over 44,000 articles using Scikit-learn and Pandas, achieving approximately 98.6% prediction accuracy with a Logistic Regression classifier.",
-    technicalApproach: [
-      "Dataset ingestion and tabular data processing using Pandas",
-      "Text preprocessing including cleaning, tokenization, and vector representation",
-      "Logistic Regression classification model trained and evaluated on held-out test data"
-    ],
-    keyFeatures: [
-      {
-        title: "Large-Scale Dataset Ingestion",
-        description: "Processed and analyzed a corpus of over 44,000 news articles."
-      },
-      {
-        title: "NLP Preprocessing Pipeline",
-        description: "Text cleaning, tokenization, and feature vectorization."
-      },
-      {
-        title: "Logistic Regression Classifier",
-        description: "Trained classification model for accurate news veracity prediction."
-      },
-      {
-        title: "High Prediction Accuracy",
-        description: "Achieved approximately 98.6% prediction accuracy on evaluation data."
-      }
-    ],
-    databaseDetails: "Dataset containing over 44,000 articles processed with Pandas data structures.",
-    resultsOrMetrics: [
-      "44,000+ articles processed in training and evaluation",
-      "Approximately 98.6% prediction accuracy achieved"
     ]
   }
 ];

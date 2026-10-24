@@ -39,10 +39,10 @@ export default function FakeNewsDetectionPage() {
             Machine Learning & NLP
           </Badge>
           <Badge variant="success" size="md">
-            ~98.6% Prediction Accuracy
+            98.6% Accuracy &bull; 98.6% F1
           </Badge>
           <Badge variant="default" size="md">
-            44,000+ Corpus
+            44,898 Labeled Articles
           </Badge>
         </div>
 
@@ -100,37 +100,60 @@ export default function FakeNewsDetectionPage() {
       </div>
 
       {/* Accuracy & Dataset Metrics Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <div className="p-6 rounded-2xl border border-sky-500/20 bg-[#0e1626]/70 flex items-center gap-5">
-          <div className="h-14 w-14 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 shrink-0">
-            <BarChart3 className="h-7 w-7" />
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div className="p-6 rounded-2xl border border-sky-500/20 bg-[#0e1626]/70 flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-3xl font-extrabold text-white tracking-tight font-mono">
+              98.6%
+            </span>
+            <div className="h-10 w-10 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
+              <BarChart3 className="h-5 w-5" />
+            </div>
           </div>
           <div>
-            <span className="text-3xl font-extrabold text-white tracking-tight font-mono">
-              ~98.6%
-            </span>
-            <p className="text-xs font-mono text-sky-400 mt-0.5">
-              Prediction Accuracy
+            <p className="text-xs font-mono text-sky-400 font-semibold">
+              Logistic Regression
             </p>
             <p className="text-xs text-slate-400 mt-1">
-              Evaluated with Scikit-learn Logistic Regression on held-out test data.
+              98.4% Precision &bull; 98.8% Recall &bull; 98.6% F1-Score on 80/20 test split.
             </p>
           </div>
         </div>
 
-        <div className="p-6 rounded-2xl border border-emerald-500/20 bg-[#0e1f1c]/70 flex items-center gap-5">
-          <div className="h-14 w-14 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
-            <Binary className="h-7 w-7" />
+        <div className="p-6 rounded-2xl border border-emerald-500/20 bg-[#0e1f1c]/70 flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-3xl font-extrabold text-white tracking-tight font-mono">
+              44,898
+            </span>
+            <div className="h-10 w-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+              <Binary className="h-5 w-5" />
+            </div>
           </div>
           <div>
-            <span className="text-3xl font-extrabold text-white tracking-tight font-mono">
-              44,000+
-            </span>
-            <p className="text-xs font-mono text-emerald-400 mt-0.5">
-              Articles Dataset
+            <p className="text-xs font-mono text-emerald-400 font-semibold">
+              Labeled Articles Corpus
             </p>
             <p className="text-xs text-slate-400 mt-1">
-              Processed with Pandas data structures and NLP preprocessing.
+              Preprocessed with NLTK tokenization, stopword removal, and Porter stemming.
+            </p>
+          </div>
+        </div>
+
+        <div className="p-6 rounded-2xl border border-purple-500/20 bg-[#160e26]/70 flex flex-col justify-between">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-3xl font-extrabold text-white tracking-tight font-mono">
+              10,000
+            </span>
+            <div className="h-10 w-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+              <Terminal className="h-5 w-5" />
+            </div>
+          </div>
+          <div>
+            <p className="text-xs font-mono text-purple-400 font-semibold">
+              CountVectorizer Matrix
+            </p>
+            <p className="text-xs text-slate-400 mt-1">
+              Engineered high-dimensional feature representations for classifier comparison.
             </p>
           </div>
         </div>

@@ -1,6 +1,8 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, Github, ExternalLink, Clock, Server, ShoppingBag, Binary, Database, Cpu, Layers } from "lucide-react";
+import { ArrowRight, Github, ExternalLink, Clock, Server, ShoppingBag, Binary, Database, Cpu, Layers, Brain } from "lucide-react";
 import { Project } from "@/data/portfolio";
 import { Badge } from "@/components/ui/Badge";
 
@@ -39,6 +41,36 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
       );
     }
 
+    if (project.id === "devops-ai") {
+      return (
+        <div className="mb-4 p-3 rounded-xl bg-slate-950/80 border border-purple-500/20 flex items-center justify-between font-mono text-[10px] text-slate-300">
+          <div className="flex items-center gap-1.5 text-purple-300">
+            <Brain className="h-3 w-3" />
+            <span>AI Anomaly ML</span>
+          </div>
+          <span className="text-slate-400">&bull;</span>
+          <span className="text-sky-300">LSTM & XGBoost</span>
+          <span className="text-slate-400">&bull;</span>
+          <span className="text-emerald-300">Self-Healing</span>
+        </div>
+      );
+    }
+
+    if (project.id === "fake-news-detection") {
+      return (
+        <div className="mb-4 p-3 rounded-xl bg-slate-950/80 border border-sky-500/20 flex items-center justify-between font-mono text-[10px] text-slate-300">
+          <div className="flex items-center gap-1.5 text-sky-300">
+            <Binary className="h-3 w-3" />
+            <span>NLP Pipeline</span>
+          </div>
+          <span className="text-slate-400">&bull;</span>
+          <span className="text-emerald-300 font-bold">~98.6% Accuracy</span>
+          <span className="text-slate-400">&bull;</span>
+          <span className="text-slate-400">44.8k Articles</span>
+        </div>
+      );
+    }
+
     if (project.id === "cartzilla") {
       return (
         <div className="mb-4 p-3 rounded-xl bg-slate-950/80 border border-white/[0.06] flex items-center justify-between font-mono text-[10px] text-slate-300">
@@ -54,27 +86,12 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
       );
     }
 
-    if (project.id === "fake-news-detection") {
-      return (
-        <div className="mb-4 p-3 rounded-xl bg-slate-950/80 border border-white/[0.06] flex items-center justify-between font-mono text-[10px] text-slate-300">
-          <div className="flex items-center gap-1.5 text-sky-300">
-            <Binary className="h-3 w-3" />
-            <span>NLP Pipeline</span>
-          </div>
-          <span className="text-slate-400">&bull;</span>
-          <span className="text-emerald-300 font-bold">~98.6% Accuracy</span>
-          <span className="text-slate-400">&bull;</span>
-          <span className="text-slate-400">44k+ Corpus</span>
-        </div>
-      );
-    }
-
     return null;
   };
 
   return (
     <div
-      className={`group relative rounded-2xl border transition-all duration-300 flex flex-col justify-between overflow-hidden ${
+      className={`group relative rounded-2xl border transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1 hover:shadow-xl hover:shadow-black/40 ${
         isFlagship
           ? "bg-gradient-to-b from-[#0f172a]/70 to-[#0b0f19]/90 border-sky-500/30 hover:border-sky-400 shadow-lg shadow-sky-950/20"
           : "bg-[#0c101b]/70 border-white/[0.08] hover:border-slate-600"
@@ -92,18 +109,22 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
             <span className="font-mono text-xs font-semibold px-2 py-0.5 rounded bg-slate-800/90 text-slate-300 border border-white/10">
               {project.order}
             </span>
-            {isFlagship && (
+            {isFlagship ? (
               <Badge variant="accent" size="sm">
-                Flagship Project
+                Flagship
+              </Badge>
+            ) : (
+              <Badge variant="default" size="sm" className="text-[10px] font-mono">
+                {project.category}
               </Badge>
             )}
           </div>
-          <span className="font-mono text-xs text-slate-400">
+          <span className="font-mono text-xs text-slate-400 truncate max-w-[160px]">
             {project.subtitle}
           </span>
         </div>
 
-        {/* Visual Thumbnail */}
+        {/* Visual Diagram Strip */}
         {renderProjectVisual()}
 
         {/* Project Title */}
@@ -153,15 +174,15 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
               className="inline-flex items-center gap-1 text-xs font-mono text-slate-300 hover:text-white px-2.5 py-1 rounded-md bg-slate-900 border border-slate-700 hover:border-slate-500 transition-colors"
             >
               <Github className="h-3.5 w-3.5" />
-              <span>View on GitHub</span>
+              <span>GitHub</span>
             </a>
           ) : (
             <span
-              title="Repository will be linked once pushed"
+              title="Repository or paper will be linked once published"
               className="inline-flex items-center gap-1 text-xs font-mono text-slate-400 px-2.5 py-1 rounded-md bg-slate-900/60 border border-slate-800"
             >
               <Clock className="h-3 w-3" />
-              <span>Repository coming soon</span>
+              <span>Coming soon</span>
             </span>
           )}
 

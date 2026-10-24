@@ -8,11 +8,13 @@ import { Badge } from "@/components/ui/Badge";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import HeroVisual from "@/components/home/HeroVisual";
 import HeroRoleRotator from "@/components/home/HeroRoleRotator";
+import { FlagshipProjectCard } from "@/components/projects/FlagshipProjectCard";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { SkillGroup } from "@/components/skills/SkillGroup";
 
 export default function HomePage() {
-  const featuredProjects = PROJECTS.filter((p) => p.featured);
+  const flagshipProject = PROJECTS.find((p) => p.id === "distributed-job-scheduler");
+  const complementaryProjects = PROJECTS.filter((p) => p.id !== "distributed-job-scheduler");
 
   return (
     <div className="space-y-12 sm:space-y-16">
@@ -139,7 +141,7 @@ export default function HomePage() {
           <SectionHeading
             label="Featured Work"
             title="Selected Projects"
-            description="Distributed queue systems, full-stack web applications, and machine learning pipelines built with practical engineering."
+            description="Distributed queue systems, applied machine learning pipelines, and full-stack software architectures."
             className="mb-0"
           />
           <Link
@@ -151,10 +153,27 @@ export default function HomePage() {
           </Link>
         </div>
 
+        {/* Flagship Hero Card */}
+        {flagshipProject && <FlagshipProjectCard project={flagshipProject} />}
+
+        {/* Complementary Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} featured />
+          {complementaryProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
+        </div>
+
+        {/* Explore All Projects CTA */}
+        <div className="flex justify-center pt-2">
+          <Button
+            href="/projects"
+            variant="outline"
+            size="lg"
+            className="w-full sm:w-auto font-mono text-xs"
+            icon={<ArrowRight className="h-4 w-4" />}
+          >
+            Explore All Projects &amp; Case Studies ({PROJECTS.length})
+          </Button>
         </div>
       </section>
 
