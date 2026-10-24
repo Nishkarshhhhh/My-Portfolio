@@ -101,7 +101,7 @@ export default function Navbar() {
             <Linkedin className="h-4 w-4" />
           </a>
           <Button
-            href="/resume.pdf"
+            href={DEVELOPER_PROFILE.resumePath}
             external
             variant="outline"
             size="sm"
@@ -115,7 +115,7 @@ export default function Navbar() {
         {/* Mobile menu toggle */}
         <div className="flex md:hidden items-center gap-2">
           <Button
-            href="/resume.pdf"
+            href={DEVELOPER_PROFILE.resumePath}
             external
             variant="outline"
             size="sm"

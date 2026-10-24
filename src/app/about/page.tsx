@@ -81,7 +81,7 @@ export default function AboutPage() {
                 Get in Touch
               </Button>
               <Button
-                href="/resume.pdf"
+                href={DEVELOPER_PROFILE.resumePath}
                 external
                 variant="outline"
                 size="sm"

@@ -56,7 +56,7 @@ export const DEVELOPER_PROFILE = {
   githubUrl: "https://github.com/Nishkarshhhhh",
   linkedinUrl: "https://www.linkedin.com/in/nishkarshvarshney18/",
   location: "Ghaziabad, India",
-  resumePath: "/resume.pdf",
+  resumePath: "/New_Ultar_Main_Resume(20261024-125233).pdf",
   aboutNarrative: `I am a Computer Science Engineering student at S.R.M. Institute of Science and Technology (2023–2027) with a 9.40 CGPA. My focus is on software development, backend systems, and full-stack web applications.
 
 During my internship at Labmentix, I developed and integrated RESTful APIs using Node.js, Express.js, and Django, supported backend business logic and workflows, optimized API response handling and frontend assets to achieve an approximate 20% reduction in page load time, and resolved functional and performance bottlenecks.

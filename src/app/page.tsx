@@ -48,7 +48,7 @@ export default function HomePage() {
                 View Projects
               </Button>
               <Button
-                href="/resume.pdf"
+                href={DEVELOPER_PROFILE.resumePath}
                 external
                 variant="secondary"
                 size="lg"
