@@ -12,7 +12,7 @@ export function ExperienceTimeline() {
           <div className="h-8 w-8 rounded-lg bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400">
             <Briefcase className="h-4 w-4" />
           </div>
-          <h3 className="text-xl font-bold text-white">Professional Experience</h3>
+          <h3 className="text-xl font-bold text-white">Experience</h3>
         </div>
 
         <div className="relative pl-6 sm:pl-8 border-l border-white/[0.1] space-y-8">
@@ -22,16 +22,37 @@ export function ExperienceTimeline() {
               <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 h-4 w-4 rounded-full bg-[#080b11] border-2 border-sky-400 group-hover:scale-125 transition-transform" />
 
               <div className="p-6 rounded-2xl border border-white/[0.08] bg-[#0c101b]/70 backdrop-blur-md hover:border-slate-600 transition-all space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div>
-                    <h4 className="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
-                      {exp.role}
-                    </h4>
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                  <div className="space-y-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h4 className="text-lg font-bold text-white group-hover:text-sky-300 transition-colors">
+                        {exp.role}
+                      </h4>
+                      {exp.badge && (
+                        <Badge
+                          variant={exp.type === "research" ? "accent" : "default"}
+                          size="sm"
+                          className="text-[10px] uppercase tracking-wider font-mono py-0.5 px-2"
+                        >
+                          {exp.badge}
+                        </Badge>
+                      )}
+                    </div>
                     <p className="text-sm font-semibold text-sky-400">
                       {exp.company}
                     </p>
+                    {exp.projectTitle && (
+                      <div className="pt-1">
+                        <span className="text-[11px] font-mono uppercase tracking-wider text-slate-400 font-semibold block">
+                          Research Project:
+                        </span>
+                        <p className="text-sm font-medium text-slate-200 mt-0.5 leading-snug">
+                          {exp.projectTitle}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono text-slate-400">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono text-slate-400 shrink-0 sm:pt-0.5">
                     <span className="flex items-center gap-1">
                       <Calendar className="h-3.5 w-3.5 text-slate-400" />
                       {exp.period}

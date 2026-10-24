@@ -27,6 +27,9 @@ export interface ExperienceItem {
   role: string;
   location: string;
   period: string;
+  type?: "internship" | "research" | "work";
+  badge?: string;
+  projectTitle?: string;
   highlights: string[];
   technologies: string[];
 }
@@ -240,11 +243,38 @@ export const PROJECTS: Project[] = [
 
 export const EXPERIENCES: ExperienceItem[] = [
   {
+    id: "devops-ai-research",
+    company: "SRM Institute of Science and Technology (SRM IST)",
+    role: "Researcher",
+    location: "Ghaziabad, India",
+    period: "2026",
+    type: "research",
+    badge: "Research Experience",
+    projectTitle: "DevOpsAI: An Analytical Study of AI-Driven Automation in Modern DevOps Pipelines",
+    highlights: [
+      "Investigated AI-driven automation in modern DevOps pipelines through literature review and controlled evaluation of predictive and self-healing machine learning models.",
+      "Analyzed and evaluated anomaly detection, forecasting, and self-healing architectures using LSTM, XGBoost, Isolation Forest, Prophet/ARIMA, and PPO-based reinforcement learning.",
+      "Evaluated reported outcomes involving an 82% reduction in Mean Time to Detect (MTTD), a 79% reduction in Mean Time to Recover (MTTR), a 54% decrease in change failure rate, a 4.5× increase in deployment frequency, and 68% autonomous fault resolution."
+    ],
+    technologies: [
+      "Python",
+      "LSTM",
+      "XGBoost",
+      "Isolation Forest",
+      "Prophet/ARIMA",
+      "Reinforcement Learning (PPO)",
+      "DevOps",
+      "Anomaly Detection"
+    ]
+  },
+  {
     id: "labmentix",
     company: "Labmentix",
     role: "Full Stack Web Development Intern",
     location: "Bangalore, India",
     period: "June 2025 – September 2025",
+    type: "internship",
+    badge: "Internship",
     highlights: [
       "Developed and integrated RESTful APIs using Node.js, Express.js and Django.",
       "Supported backend business logic and application workflows.",

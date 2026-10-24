@@ -5,7 +5,7 @@ import { ExperienceTimeline } from "@/components/experience/ExperienceTimeline";
 export const metadata = {
   title: "Experience & Education | Nishkarsh Varshney",
   description:
-    "Professional software development experience at Labmentix and academic record at S.R.M. Institute of Science and Technology.",
+    "AI/ML research experience at SRM IST, professional software development internship at Labmentix, and academic record at S.R.M. Institute of Science and Technology.",
 };
 
 export default function ExperiencePage() {
@@ -14,7 +14,7 @@ export default function ExperiencePage() {
       <SectionHeading
         label="Background"
         title="Experience & Education"
-        description="A timeline of industry internship experience, software contributions, and rigorous computer science academic foundations."
+        description="A timeline of research exploration, software development contributions, and academic foundations."
       />
 
       <ExperienceTimeline />

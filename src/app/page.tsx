@@ -138,7 +138,7 @@ export default function HomePage() {
               Developed and integrated RESTful APIs using Node.js, Express.js, and Django. Optimized API response handling and frontend assets, achieving approximately a 20% reduction in page load time while improving application reliability.
             </p>
             <div className="flex flex-wrap gap-2 pt-2">
-              {EXPERIENCES[0].technologies.map((t) => (
+              {(EXPERIENCES.find((e) => e.id === "labmentix") ?? EXPERIENCES[0]).technologies.map((t) => (
                 <span
                   key={t}
                   className="text-xs font-mono px-2.5 py-1 rounded bg-slate-900/90 text-slate-300 border border-slate-800"
