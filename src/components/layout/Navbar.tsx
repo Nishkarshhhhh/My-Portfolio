@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Github, Linkedin, FileText, Menu, X, Terminal } from "lucide-react";
+import { motion, useReducedMotion, LayoutGroup } from "framer-motion";
 import { DEVELOPER_PROFILE } from "@/data/portfolio";
 import { Button } from "@/components/ui/Button";
 
@@ -11,6 +12,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +32,7 @@ export default function Navbar() {
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
+    return pathname === href || pathname.startsWith(`${href}/`);
   };
 
   return (
@@ -61,23 +63,43 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-white/[0.08] backdrop-blur-sm">
-          {navLinks.map((link) => {
-            const active = isActive(link.href);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-xs font-medium px-3.5 py-1.5 rounded-full transition-all duration-200 ${
-                  active
-                    ? "bg-sky-500/15 text-sky-300 border border-sky-500/30 shadow-sm"
-                    : "text-slate-300 hover:text-white hover:bg-white/[0.05]"
-                }`}
-              >
-                {link.name}
-              </Link>
-            );
-          })}
+        <nav
+          className="hidden md:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-full border border-white/[0.08] backdrop-blur-sm relative"
+          aria-label="Main Navigation"
+        >
+          <LayoutGroup id="desktop-nav">
+            {navLinks.map((link) => {
+              const active = isActive(link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative text-xs font-medium px-3.5 py-1.5 rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 ${
+                    active
+                      ? "text-sky-300 font-semibold"
+                      : "text-slate-300 hover:text-white hover:bg-white/[0.04]"
+                  }`}
+                >
+                  {active && (
+                    <motion.div
+                      layoutId="navbar-active-pill"
+                      className="absolute inset-0 rounded-full bg-sky-500/15 border border-sky-500/30 shadow-sm shadow-sky-500/10"
+                      transition={
+                        shouldReduceMotion
+                          ? { duration: 0 }
+                          : {
+                              type: "spring",
+                              stiffness: 380,
+                              damping: 30,
+                            }
+                      }
+                    />
+                  )}
+                  <span className="relative z-10">{link.name}</span>
+                </Link>
+              );
+            })}
+          </LayoutGroup>
         </nav>
 
         {/* Desktop Social & Resume */}
