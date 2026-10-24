@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import HeroVisual from "@/components/home/HeroVisual";
+import HeroRoleRotator from "@/components/home/HeroRoleRotator";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { SkillGroup } from "@/components/skills/SkillGroup";
 
@@ -16,26 +17,56 @@ export default function HomePage() {
   return (
     <div className="space-y-12 sm:space-y-16">
       {/* Hero Section */}
-      <section className="space-y-6 pt-2 sm:pt-4">
+      <section className="space-y-8 pt-2 sm:pt-4">
         <div className="flex flex-col-reverse md:flex-row md:items-center justify-between gap-8 md:gap-10">
-          <div className="space-y-4 max-w-2xl flex-1">
+          <div className="space-y-5 max-w-2xl flex-1">
             {/* Academic Profile Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950/40 border border-sky-500/30 text-sky-300 text-xs font-mono">
-              <span className="h-2 w-2 rounded-full bg-sky-400 animate-pulse" />
-              <span>Computer Science &bull; SRMIST &bull; 9.40 CGPA</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-950/40 border border-sky-500/30 text-sky-300 text-xs font-mono shadow-sm shadow-sky-500/10">
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>B.Tech Computer Science &bull; SRM IST &bull; 9.40 CGPA</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
-              {DEVELOPER_PROFILE.name}
-            </h1>
+            {/* Name & Animated Focus */}
+            <div className="space-y-2">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+                {DEVELOPER_PROFILE.name}
+              </h1>
+              <div className="flex flex-wrap items-center gap-x-2 text-base sm:text-lg font-mono text-slate-300">
+                <span className="text-slate-400">Focusing on</span>
+                <HeroRoleRotator
+                  words={[
+                    "Artificial Intelligence & ML",
+                    "Distributed Systems & Backend",
+                    "Data Science & NLP",
+                    "High-Reliability APIs",
+                  ]}
+                />
+              </div>
+            </div>
 
-            <p className="text-lg sm:text-xl font-medium text-sky-400 font-mono">
-              {DEVELOPER_PROFILE.title} | {DEVELOPER_PROFILE.focus}
-            </p>
-
+            {/* Supporting Summary */}
             <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-              {DEVELOPER_PROFILE.headline}
+              Computer Science undergraduate at SRM IST focused on engineering high-reliability backend systems, scalable distributed architectures, and AI/ML data pipelines. Researcher on <span className="text-white font-medium">DevOpsAI</span> and builder of resilient services like the <span className="text-white font-medium">Distributed Job Scheduler</span>.
             </p>
+
+            {/* Quick-Scan Highlights */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1">
+              <div className="p-3 rounded-xl border border-white/[0.08] bg-slate-900/40 backdrop-blur-sm hover:border-slate-700 transition-colors">
+                <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider">Academics</div>
+                <div className="text-sm font-bold text-white mt-0.5">9.40 CGPA</div>
+                <div className="text-[11px] text-slate-400">SRM IST &bull; B.Tech CSE</div>
+              </div>
+              <div className="p-3 rounded-xl border border-white/[0.08] bg-slate-900/40 backdrop-blur-sm hover:border-sky-500/30 transition-colors">
+                <div className="text-[11px] font-mono text-sky-400/90 uppercase tracking-wider">Research</div>
+                <div className="text-sm font-bold text-sky-300 mt-0.5">DevOpsAI</div>
+                <div className="text-[11px] text-slate-400">AI-Driven Pipelines</div>
+              </div>
+              <div className="col-span-2 sm:col-span-1 p-3 rounded-xl border border-white/[0.08] bg-slate-900/40 backdrop-blur-sm hover:border-emerald-500/30 transition-colors">
+                <div className="text-[11px] font-mono text-emerald-400/90 uppercase tracking-wider">Flagship System</div>
+                <div className="text-sm font-bold text-emerald-300 mt-0.5">Job Scheduler</div>
+                <div className="text-[11px] text-slate-400">BullMQ &bull; Redis &bull; Docker</div>
+              </div>
+            </div>
 
             {/* Primary Actions & Social Links */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
@@ -54,7 +85,7 @@ export default function HomePage() {
                 size="lg"
                 icon={<FileText className="h-4 w-4 text-sky-400" />}
               >
-                View Resume
+                Download Resume
               </Button>
 
               <div className="flex items-center gap-2 pl-2 border-l border-white/10">
@@ -82,15 +113,18 @@ export default function HomePage() {
 
           {/* Profile Photo */}
           <div className="shrink-0 flex justify-center md:justify-end">
-            <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 rounded-full overflow-hidden bg-white border-2 border-sky-500/30 shadow-2xl shadow-sky-950/40 relative">
-              <Image
-                src="/profpic2.png"
-                alt="Nishkarsh Varshney"
-                width={224}
-                height={224}
-                priority
-                className="w-full h-full object-cover"
-              />
+            <div className="relative group">
+              <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-sky-500/30 to-indigo-500/20 blur-md opacity-70 group-hover:opacity-100 transition duration-500" />
+              <div className="w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 lg:w-56 lg:h-56 rounded-full overflow-hidden bg-slate-900 border-2 border-sky-500/40 shadow-2xl shadow-sky-950/50 relative">
+                <Image
+                  src="/profpic2.png"
+                  alt="Nishkarsh Varshney"
+                  width={224}
+                  height={224}
+                  priority
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
             </div>
           </div>
         </div>

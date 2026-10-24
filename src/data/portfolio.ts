@@ -302,40 +302,47 @@ export const EDUCATION: EducationItem[] = [
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: "Languages",
-    description: "Core programming languages for systems and web applications",
-    skills: ["TypeScript", "JavaScript", "Python", "C++", "SQL", "C"]
+    title: "Programming Languages",
+    description: "Core programming languages for software and systems engineering",
+    skills: ["Python", "C++", "C", "JavaScript", "SQL"]
   },
   {
-    title: "Backend & Queues",
-    description: "Server-side frameworks, APIs, and message queues",
-    skills: ["Node.js", "Express.js", "Django", "BullMQ", "REST APIs"]
-  },
-  {
-    title: "Databases & ORM",
-    description: "Relational, in-memory data stores, and ORMs",
-    skills: ["PostgreSQL", "MySQL", "Redis", "Prisma"]
-  },
-  {
-    title: "Tools & DevOps",
-    description: "Development toolchains, containerization, and build tools",
-    skills: ["Docker", "Git", "GitHub", "Linux", "CMake", "VS Code"]
-  },
-  {
-    title: "Computer Science",
-    description: "Core computer science fundamentals",
+    title: "AI & Data Science",
+    description: "Machine learning models, natural language processing, and data processing",
     skills: [
-      "Data Structures & Algorithms",
-      "OOP",
-      "DBMS",
-      "Operating Systems",
-      "Computer Networks",
-      "SDLC"
+      "Machine Learning",
+      "Natural Language Processing (NLP)",
+      "Data Processing",
+      "ETL Concepts",
+      "Pandas",
+      "Scikit-learn"
     ]
   },
   {
-    title: "Concepts",
-    description: "Software engineering and distributed systems concepts",
-    skills: ["Distributed Systems", "API Design", "Debugging & Troubleshooting"]
+    title: "Backend Development",
+    description: "Server-side architectures, RESTful APIs, and backend frameworks",
+    skills: ["Node.js", "Express.js", "Django", "REST APIs"]
+  },
+  {
+    title: "Databases & Queues",
+    description: "Relational data stores, in-memory caching, and message broker systems",
+    skills: ["PostgreSQL", "MySQL", "Redis"]
+  },
+  {
+    title: "DevOps & Development Tools",
+    description: "Containerization, Linux environments, version control, and build tools",
+    skills: ["Docker", "Git", "GitHub", "Linux", "CMake", "VS Code"]
+  },
+  {
+    title: "Computer Science Fundamentals",
+    description: "Core theoretical foundations, data structures, and engineering principles",
+    skills: [
+      "Data Structures & Algorithms",
+      "DBMS",
+      "Operating Systems",
+      "Computer Networks",
+      "Object-Oriented Programming (OOP)",
+      "SDLC"
+    ]
   }
 ];
